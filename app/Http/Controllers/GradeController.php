@@ -74,7 +74,9 @@ class GradeController extends Controller
      */
     public function update(Request $request, Grade $grade)
     {
-        //
+        $grade->grade = $request['upd_grade'];
+        $grade->save();
+        return redirect()->back()->with('status_success', 'Grade updated!');
     }
 
     /**
