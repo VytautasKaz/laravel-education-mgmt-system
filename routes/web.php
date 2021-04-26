@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::resource('students', StudentController::class);
 Route::resource('lectures', LectureController::class);

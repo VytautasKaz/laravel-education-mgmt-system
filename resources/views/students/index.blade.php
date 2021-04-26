@@ -12,7 +12,6 @@
                 <th>Surname</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Lectures</th>
                 <th>Actions</th>
             </tr>
             @foreach ($students as $student)
@@ -33,7 +32,7 @@
             @endforeach
         </table>
         <div>
-            <a href="#" class="btn btn-success">Add</a>
+            <a href="{{ route('students.create') }}" class="btn btn-success">Add</a>
         </div>
     </div>
 @endsection

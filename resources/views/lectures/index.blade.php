@@ -10,14 +10,12 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Students</th>
                 <th>Actions</th>
             </tr>
             @foreach ($lectures as $lecture)
                 <tr>
                     <td>{{ $lecture->name }}</td>
                     <td>{{ $lecture->description }}</td>
-                    <td></td>
                     <td>
                         <form action="#" method="POST">
                             <a class="btn btn-success" href="#">Edit</a>
@@ -30,7 +28,7 @@
             @endforeach
         </table>
         <div>
-            <a href="#" class="btn btn-success">Add</a>
+            <a href="{{ route('lectures.create') }}" class="btn btn-success">Add</a>
         </div>
     </div>
 @endsection

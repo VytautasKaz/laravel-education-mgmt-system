@@ -25,6 +25,7 @@ class CreateGradesTable extends Migration
                 ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('restrict');
+            $table->integer('grade');
             $table->timestamps();
         });
     }

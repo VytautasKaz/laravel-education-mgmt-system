@@ -14,6 +14,6 @@ class Lecture extends Model
 
     public function students()
     {
-        return $this->belongsToMany(Student::class);
+        return $this->belongsToMany(Student::class, 'grades');
     }
 }
