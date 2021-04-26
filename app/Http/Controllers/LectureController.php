@@ -14,7 +14,7 @@ class LectureController extends Controller
      */
     public function index()
     {
-        //
+        return view('lectures.index', ['lectures' => Lecture::orderBy('name')->get()]);
     }
 
     /**

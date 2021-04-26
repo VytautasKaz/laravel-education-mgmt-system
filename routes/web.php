@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LectureController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +20,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::resource('students', StudentController::class);
+Route::resource('lectures', LectureController::class);
 
 Auth::routes();
 
