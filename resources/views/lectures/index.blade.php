@@ -17,8 +17,8 @@
                     <td>{{ $lecture->name }}</td>
                     <td>{{ $lecture->description }}</td>
                     <td>
-                        <form action="#" method="POST">
-                            <a class="btn btn-success" href="#">Edit</a>
+                        <form action="{{ route('lectures.destroy', $lecture->id) }}" method="POST">
+                            <a class="btn btn-success" href="{{ route('lectures.edit', $lecture->id) }}">Edit</a>
                             @csrf @method('delete')
                             <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
                                 value="Delete" />

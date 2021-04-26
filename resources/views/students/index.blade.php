@@ -21,8 +21,8 @@
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->phone }}</td>
                     <td>
-                        <form action="#" method="POST">
-                            <a class="btn btn-success" href="#">Edit</a>
+                        <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                            <a class="btn btn-success" href="{{ route('students.edit', $student->id) }}">Edit</a>
                             @csrf @method('delete')
                             <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
                                 value="Delete" />

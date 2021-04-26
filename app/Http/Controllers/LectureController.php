@@ -61,7 +61,7 @@ class LectureController extends Controller
      */
     public function edit(Lecture $lecture)
     {
-        //
+        return view('lectures.edit', ['lecture' => $lecture]);
     }
 
     /**
@@ -73,7 +73,9 @@ class LectureController extends Controller
      */
     public function update(Request $request, Lecture $lecture)
     {
-        //
+        $lecture->fill($request->all());
+        $lecture->save();
+        return redirect()->route('lectures.index');
     }
 
     /**
@@ -84,6 +86,7 @@ class LectureController extends Controller
      */
     public function destroy(Lecture $lecture)
     {
-        //
+        $lecture->delete();
+        return redirect()->route('lectures.index');
     }
 }
