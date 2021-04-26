@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Lecture;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -50,7 +51,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('students.show', ['student' => $student, 'lectures' => Lecture::all(), 'grades' => Grade::all()]);
     }
 
     /**

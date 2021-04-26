@@ -22,6 +22,7 @@
                     <td>{{ $student->phone }}</td>
                     <td>
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                            <a class="btn btn-info" href="{{ route('students.show', $student->id) }}">View Grades</a>
                             <a class="btn btn-success" href="{{ route('students.edit', $student->id) }}">Edit</a>
                             @csrf @method('delete')
                             <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
