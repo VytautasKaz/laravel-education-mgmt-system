@@ -46,6 +46,9 @@
                         <li class="nav-item {{ Request::routeIs('lectures.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('lectures.index') }}">Lectures</a>
                         </li>
+                        <li class="nav-item {{ Request::routeIs('grades.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('grades.index') }}">Grading</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -73,7 +76,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

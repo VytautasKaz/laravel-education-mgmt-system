@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::resource('students', StudentController::class);
 Route::resource('lectures', LectureController::class);
+Route::resource('grades', GradeController::class);
 
 Auth::routes();
 
