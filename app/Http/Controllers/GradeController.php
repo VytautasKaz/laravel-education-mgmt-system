@@ -37,6 +37,9 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request['grade'] > 10 || $request['grade'] < 1) {
+            return redirect()->route('grades.index')->with('status_error', 'Failed to add grade. Grade must be > 0 and < 11.');
+        }
         $grade = new Grade();
         $grade->fill($request->all());
         $grade->save();
@@ -74,6 +77,9 @@ class GradeController extends Controller
      */
     public function update(Request $request, Grade $grade)
     {
+        if ($request['upd_grade'] > 10 || $request['upd_grade'] < 1) {
+            return redirect()->back()->with('status_error', 'Failed to add grade. Grade must be > 0 and < 11');
+        }
         $grade->grade = $request['upd_grade'];
         $grade->save();
         return redirect()->back()->with('status_success', 'Grade updated!');

@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="">Grade:</label>
                     <input type="number" name="grade" class="form-control" required>
-                    @error('surname')
+                    @error('grade')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
