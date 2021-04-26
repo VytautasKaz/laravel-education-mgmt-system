@@ -13,10 +13,16 @@
                 <th>Grade</th>
                 <th>Actions</th>
             </tr>
-            {{-- @foreach ($lectures as $lecture)
+            @foreach ($grades as $grade)
                 <tr>
-                    <td>{{ $lecture->name }}</td>
-                    <td></td>
+                    <td>
+                        @foreach ($lectures as $lecture)
+                            @if ($lecture->id == $grade->lecture_id)
+                                {{ __($lecture->name) }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td> {{ $grade->grade }} </td>
                     <td>
                         <form action="" method="POST">
                             <a class="btn btn-success" href="#">Edit</a>
@@ -26,7 +32,7 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </table>
     </div>
 @endsection

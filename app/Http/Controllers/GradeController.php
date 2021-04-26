@@ -40,7 +40,7 @@ class GradeController extends Controller
         $grade = new Grade();
         $grade->fill($request->all());
         $grade->save();
-        return redirect()->route('grades.index');
+        return redirect()->route('grades.index')->with('status_success', 'Grade added!');
     }
 
     /**
