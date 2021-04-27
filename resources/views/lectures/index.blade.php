@@ -10,25 +10,31 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Actions</th>
+                @if (auth()->check())
+                    <th>Actions</th>
+                @endif
             </tr>
             @foreach ($lectures as $lecture)
                 <tr>
                     <td>{{ $lecture->name }}</td>
                     <td>{{ $lecture->description }}</td>
-                    <td>
-                        <form action="{{ route('lectures.destroy', $lecture->id) }}" method="POST">
-                            <a class="btn btn-success" href="{{ route('lectures.edit', $lecture->id) }}">Edit</a>
-                            @csrf @method('delete')
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
-                                value="Delete" />
-                        </form>
-                    </td>
+                    @if (auth()->check())
+                        <td>
+                            <form action="{{ route('lectures.destroy', $lecture->id) }}" method="POST">
+                                <a class="btn btn-success" href="{{ route('lectures.edit', $lecture->id) }}">Edit</a>
+                                @csrf @method('delete')
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
+                                    value="Delete" />
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </table>
-        <div>
-            <a href="{{ route('lectures.create') }}" class="btn btn-success">Add</a>
-        </div>
+        @if (auth()->check())
+            <div>
+                <a href="{{ route('lectures.create') }}" class="btn btn-success">Add</a>
+            </div>
+        @endif
     </div>
 @endsection

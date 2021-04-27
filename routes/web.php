@@ -25,6 +25,10 @@ Route::resource('students', StudentController::class);
 Route::resource('lectures', LectureController::class);
 Route::resource('grades', GradeController::class);
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('grades', GradeController::class);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

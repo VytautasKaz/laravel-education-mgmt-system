@@ -23,17 +23,21 @@
                     <td>
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('students.show', $student->id) }}">View Grades</a>
-                            <a class="btn btn-success" href="{{ route('students.edit', $student->id) }}">Edit</a>
-                            @csrf @method('delete')
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
-                                value="Delete" />
+                            @if (auth()->check())
+                                <a class="btn btn-success" href="{{ route('students.edit', $student->id) }}">Edit</a>
+                                @csrf @method('delete')
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
+                                    value="Delete" />
+                            @endif
                         </form>
                     </td>
                 </tr>
             @endforeach
         </table>
-        <div>
-            <a href="{{ route('students.create') }}" class="btn btn-success">Add</a>
-        </div>
+        @if (auth()->check())
+            <div>
+                <a href="{{ route('students.create') }}" class="btn btn-success">Add</a>
+            </div>
+        @endif
     </div>
 @endsection

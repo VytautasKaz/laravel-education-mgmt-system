@@ -11,7 +11,9 @@
             <tr>
                 <th>Lecture</th>
                 <th>Grade</th>
-                <th>Actions</th>
+                @if (auth()->check())
+                    <th>Actions</th>
+                @endif
             </tr>
             @foreach ($grades as $grade)
                 <tr>
@@ -23,19 +25,21 @@
                         @endforeach
                     </td>
                     <td> {{ $grade->grade }} </td>
-                    <td>
-                        <form style="float:left;" action="" method="GET">
-                            <input type="hidden" name="current_grade" value="{{ $grade->grade }}">
-                            <input type="hidden" name="current_id" value="{{ $grade->id }}">
-                            <button class="btn btn-success" name="edit_grade" type="submit">Edit</button>
-                        </form>
-                        <form style="float:left; margin-left: 10px;" action="{{ route('grades.destroy', $grade->id) }}"
-                            method="POST">
-                            @csrf @method('delete')
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
-                                value="Delete" />
-                        </form>
-                    </td>
+                    @if (auth()->check())
+                        <td>
+                            <form style="float:left;" action="" method="GET">
+                                <input type="hidden" name="current_grade" value="{{ $grade->grade }}">
+                                <input type="hidden" name="current_id" value="{{ $grade->id }}">
+                                <button class="btn btn-success" name="edit_grade" type="submit">Edit</button>
+                            </form>
+                            <form style="float:left; margin-left: 10px;"
+                                action="{{ route('grades.destroy', $grade->id) }}" method="POST">
+                                @csrf @method('delete')
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
+                                    value="Delete" />
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </table>
