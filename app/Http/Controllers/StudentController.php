@@ -37,6 +37,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'surname' => 'required|max:64',
+            'email' => 'required|max:64',
+            'phone' => 'required|max:32',
+        ]);
         $student = new Student();
         $student->fill($request->all());
         $student->save();
@@ -74,6 +80,12 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'surname' => 'required|max:64',
+            'email' => 'required|max:64',
+            'phone' => 'required|max:32',
+        ]);
         $student->fill($request->all());
         $student->save();
         return redirect()->route('students.index');

@@ -36,6 +36,10 @@ class LectureController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'description' => 'max:200'
+        ]);
         $lecture = new Lecture();
         $lecture->fill($request->all());
         $lecture->save();
@@ -73,6 +77,10 @@ class LectureController extends Controller
      */
     public function update(Request $request, Lecture $lecture)
     {
+        $this->validate($request, [
+            'name' => 'required|max:64',
+            'description' => 'max:200'
+        ]);
         $lecture->fill($request->all());
         $lecture->save();
         return redirect()->route('lectures.index');

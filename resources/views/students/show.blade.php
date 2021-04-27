@@ -46,9 +46,10 @@
                     <form action="{{ route('grades.update', $_GET['current_id']) }}" method="POST">
                         @csrf @method('PUT')
                         <div class="form-group">
+                            <input type="hidden" value="{{ $_GET['current_id'] }}">
                             <input type="number" name="upd_grade" class="form-control" value="{{ $_GET['current_grade'] }}"
                                 required>
-                            @error('grade')
+                            @error('upd_grade')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
