@@ -1,3 +1,7 @@
+## Description
+
+Basic education system manager built with Laravel framework. **Registration and login are required to get access to create/update/delete features.**
+
 ## Launch instructions:
 
 -   If you do not have composer installed on your system, install it (installation instructions [here](https://getcomposer.org/download)).
