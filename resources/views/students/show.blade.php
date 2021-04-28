@@ -16,32 +16,32 @@
                 @endif
             </tr>
             @foreach ($grades as $grade)
-            @if ($grade->student_id == $student->id)
-                <tr>
-                    <td>
-                        @foreach ($lectures as $lecture)
-                            @if ($lecture->id == $grade->lecture_id)
-                                {{ __($lecture->name) }}
-                            @endif
-                        @endforeach
-                    </td>
-                    <td> {{ $grade->grade }} </td>
-                    @if (auth()->check())
+                @if ($grade->student_id == $student->id)
+                    <tr>
                         <td>
-                            <form style="float:left;" action="" method="GET">
-                                <input type="hidden" name="current_grade" value="{{ $grade->grade }}">
-                                <input type="hidden" name="current_id" value="{{ $grade->id }}">
-                                <button class="btn btn-success" name="edit_grade" type="submit">Edit</button>
-                            </form>
-                            <form style="float:left; margin-left: 10px;"
-                                action="{{ route('grades.destroy', $grade->id) }}" method="POST">
-                                @csrf @method('delete')
-                                <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
-                                    value="Delete" />
-                            </form>
+                            @foreach ($lectures as $lecture)
+                                @if ($lecture->id == $grade->lecture_id)
+                                    {{ __($lecture->name) }}
+                                @endif
+                            @endforeach
                         </td>
-                    @endif
-                </tr>
+                        <td> {{ $grade->grade }} </td>
+                        @if (auth()->check())
+                            <td>
+                                <form style="float:left;" action="" method="GET">
+                                    <input type="hidden" name="current_grade" value="{{ $grade->grade }}">
+                                    <input type="hidden" name="current_id" value="{{ $grade->id }}">
+                                    <button class="btn btn-success" name="edit_grade" type="submit">Edit</button>
+                                </form>
+                                <form style="float:left; margin-left: 10px;"
+                                    action="{{ route('grades.destroy', $grade->id) }}" method="POST">
+                                    @csrf @method('delete')
+                                    <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"
+                                        value="Delete" />
+                                </form>
+                            </td>
+                        @endif
+                    </tr>
                 @endif
             @endforeach
         </table>
