@@ -16,6 +16,7 @@
                 @endif
             </tr>
             @foreach ($grades as $grade)
+            @if ($grade->student_id == $student->id)
                 <tr>
                     <td>
                         @foreach ($lectures as $lecture)
@@ -41,6 +42,7 @@
                         </td>
                     @endif
                 </tr>
+                @endif
             @endforeach
         </table>
         @isset($_GET['edit_grade'])
